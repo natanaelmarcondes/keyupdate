@@ -1,0 +1,28 @@
+﻿using KeyUpdate.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace KeyUpdate.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Cliente> Clientes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Cliente>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Nome).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.RodarLocalRede).IsRequired().HasMaxLength(10);
+                entity.Property(e => e.Ativo).IsRequired();
+            });
+        }
+    }
+}

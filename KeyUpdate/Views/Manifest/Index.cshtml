@@ -1,0 +1,178 @@
+@model IEnumerable<KeyUpdate.Models.Manifest>
+
+@{
+    ViewData["Title"] = "Arquivos";
+}
+
+<div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">Arquivos</h1>
+            <p class="text-muted mb-0">Gerencie os arquivos da tabela manifest.</p>
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+            <i class="bi bi-plus-circle me-1"></i>Novo Arquivo
+        </button>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i>@TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>@TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Manifest ID</th>
+                                <th>Arquivo</th>
+                                <th>SHA256</th>
+                                <th class="text-end">Tamanho</th>
+                                <th class="text-center">Regsvr32</th>
+                                <th class="text-center">Core</th>
+                                <th class="text-center">Ativo</th>
+                                <th class="text-center pe-4">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-semibold">@item.ManifestId</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-file-earmark-text text-primary"></i>
+                                            <span>@item.NomeArquivo</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <code class="small">@item.Sha256</code>
+                                    </td>
+                                    <td class="text-end">@item.TamanhoFormatado</td>
+                                    <td class="text-center">
+                                        <div class="form-check form-switch d-inline-block m-0">
+                                            <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="regsvr32" @(item.Regsvr32 ? "checked" : null) />
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="form-check form-switch d-inline-block m-0">
+                                            <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="core" @(item.Core ? "checked" : null) />
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="form-check form-switch d-inline-block m-0">
+                                            <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="ativo" @(item.Ativo ? "checked" : null) />
+                                        </div>
+                                    </td>
+                                    <td class="text-center pe-4">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(@item.Id, '@item.NomeArquivo')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="bi bi-folder2-open text-muted" style="font-size: 3rem;"></i>
+                    <p class="text-muted mt-3 mb-0">Nenhum arquivo cadastrado.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h5 class="modal-title">Novo Arquivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Selecione o arquivo</label>
+                        <input type="file" class="form-control" id="file" name="file" required />
+                        <div class="form-text">O nome, hash SHA256 e tamanho serão atualizados automaticamente.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light border" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-upload me-1"></i>Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" method="post" asp-action="Delete" style="display:none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteId" />
+</form>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.toggle-field').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const id = this.dataset.id;
+                const field = this.dataset.field;
+                const value = this.checked;
+                const element = this;
+
+                element.disabled = true;
+
+                fetch('@Url.Action("UpdateField", "Manifest")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    body: `id=${encodeURIComponent(id)}&field=${encodeURIComponent(field)}&value=${encodeURIComponent(value)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        element.checked = !value;
+                        alert(data.message || 'Erro ao atualizar.');
+                    }
+                })
+                .catch(() => {
+                    element.checked = !value;
+                    alert('Erro ao atualizar.');
+                })
+                .finally(() => {
+                    element.disabled = false;
+                });
+            });
+        });
+
+        function confirmDelete(id, nome) {
+            if (confirm(`Deseja excluir o arquivo ${nome}?`)) {
+                document.getElementById('deleteId').value = id;
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+}

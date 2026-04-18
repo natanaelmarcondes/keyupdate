@@ -1,0 +1,62 @@
+﻿# Instruções para Configuração do Banco de Dados
+
+## Pré-requisitos
+- MariaDB instalado e em execução
+- Ferramenta dotnet-ef instalada
+
+## Passo 1: Instalar a ferramenta dotnet-ef
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+## Passo 2: Configurar a Connection String
+Edite o arquivo `appsettings.json` e atualize a connection string com os dados do seu servidor MariaDB:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost;Port=3306;Database=keyupdate;User=root;Password=SUA_SENHA;"
+}
+```
+
+## Passo 3: Criar o banco de dados
+Execute o seguinte comando SQL no MariaDB:
+
+```sql
+CREATE DATABASE keyupdate CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+## Passo 4: Criar a migration inicial
+```bash
+dotnet ef migrations add InitialCreate --project KeyUpdate.csproj
+```
+
+## Passo 5: Aplicar a migration ao banco de dados
+```bash
+dotnet ef database update --project KeyUpdate.csproj
+```
+
+## Estrutura da Tabela Clientes
+A tabela `Clientes` será criada com os seguintes campos:
+- `Id` (int, PRIMARY KEY, AUTO_INCREMENT)
+- `Nome` (varchar(200), NOT NULL)
+- `RodarLocalRede` (varchar(10), NOT NULL)
+- `Ativo` (bit, NOT NULL)
+
+## Criação Manual da Tabela (Alternativa)
+Se preferir criar a tabela manualmente sem usar migrations:
+
+```sql
+USE keyupdate;
+
+CREATE TABLE Clientes (
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+	Nome VARCHAR(200) NOT NULL,
+	RodarLocalRede VARCHAR(10) NOT NULL,
+	Ativo BIT NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+```
+
+## Verificar a conexão
+Execute o projeto e acesse: http://localhost:5000/Clientes
+
+Se a conexão estiver correta, você verá a página de gerenciamento de clientes.

@@ -1,0 +1,132 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using KeyUpdate.Data;
+using KeyUpdate.Models;
+using System.Security.Cryptography;
+
+namespace KeyUpdate.Controllers
+{
+    public class ManifestController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ManifestController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var arquivos = await _context.Manifests
+                .OrderBy(m => m.ManifestId)
+                .ThenBy(m => m.Path)
+                .ToListAsync();
+
+            return View(arquivos);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                TempData["ErrorMessage"] = "Selecione um arquivo válido.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                string sha256Hash;
+
+                using (var stream = file.OpenReadStream())
+                using (var sha256 = SHA256.Create())
+                {
+                    var hashBytes = await Task.Run(() => sha256.ComputeHash(stream));
+                    sha256Hash = Convert.ToHexString(hashBytes).ToLowerInvariant();
+                }
+
+                var proximoManifestId = await _context.Manifests
+                    .Select(m => (long?)m.ManifestId)
+                    .MaxAsync() ?? 0;
+
+                var manifest = new Manifest
+                {
+                    ManifestId = proximoManifestId + 1,
+                    Path = file.FileName,
+                    Sha256 = sha256Hash,
+                    Size = file.Length,
+                    Regsvr32 = false,
+                    Core = false,
+                    Ativo = true
+                };
+
+                _context.Manifests.Add(manifest);
+                await _context.SaveChangesAsync();
+
+                TempData["SuccessMessage"] = "Arquivo adicionado com sucesso.";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Erro ao adicionar arquivo: {ex.Message}";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateField(long id, string field, string value)
+        {
+            try
+            {
+                var manifest = await _context.Manifests.FindAsync(id);
+                if (manifest == null)
+                {
+                    return Json(new { success = false, message = "Arquivo não encontrado." });
+                }
+
+                var boolValue = value.Equals("true", StringComparison.OrdinalIgnoreCase) || value == "1";
+
+                switch (field.ToLowerInvariant())
+                {
+                    case "regsvr32":
+                        manifest.Regsvr32 = boolValue;
+                        break;
+                    case "core":
+                        manifest.Core = boolValue;
+                        break;
+                    case "ativo":
+                        manifest.Ativo = boolValue;
+                        break;
+                    default:
+                        return Json(new { success = false, message = "Campo inválido." });
+                }
+
+                await _context.SaveChangesAsync();
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var manifest = await _context.Manifests.FindAsync(id);
+            if (manifest == null)
+            {
+                TempData["ErrorMessage"] = "Arquivo não encontrado.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            _context.Manifests.Remove(manifest);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Arquivo excluído com sucesso.";
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

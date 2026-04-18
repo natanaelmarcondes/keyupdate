@@ -1,0 +1,150 @@
+using KeyUpdate.Data;
+using KeyUpdate.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace KeyUpdate.Controllers
+{
+    public class EmpresasController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public EmpresasController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Empresas
+        public async Task<IActionResult> Index()
+        {
+            var empresas = await _context.Empresas.OrderBy(e => e.EmpNome).ToListAsync();
+            return View(empresas);
+        }
+
+        // GET: Empresas/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Empresas/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("EmpCodigo,EmpNome,ExeMode,Ativo")] Empresa empresa)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Add(empresa);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Empresa cadastrada com sucesso!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException?.Message.Contains("uq_emp_codigo") == true)
+                    {
+                        ModelState.AddModelError("EmpCodigo", "Já existe uma empresa com este código.");
+                    }
+                    else if (ex.InnerException?.Message.Contains("uq_emp_nome") == true)
+                    {
+                        ModelState.AddModelError("EmpNome", "Já existe uma empresa com este nome.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Erro ao salvar empresa.");
+                    }
+                }
+            }
+            return View(empresa);
+        }
+
+        // GET: Empresas/Edit/5
+        public async Task<IActionResult> Edit(long? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var empresa = await _context.Empresas.FindAsync(id);
+            if (empresa == null)
+            {
+                return NotFound();
+            }
+            return View(empresa);
+        }
+
+        // POST: Empresas/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long id, [Bind("Id,EmpCodigo,EmpNome,ExeMode,Ativo")] Empresa empresa)
+        {
+            if (id != empresa.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    empresa.AtualizadoEm = DateTime.Now;
+                    _context.Update(empresa);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Empresa atualizada com sucesso!";
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!EmpresaExists(empresa.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                catch (DbUpdateException ex)
+                {
+                    if (ex.InnerException?.Message.Contains("uq_emp_codigo") == true)
+                    {
+                        ModelState.AddModelError("EmpCodigo", "Já existe uma empresa com este código.");
+                    }
+                    else if (ex.InnerException?.Message.Contains("uq_emp_nome") == true)
+                    {
+                        ModelState.AddModelError("EmpNome", "Já existe uma empresa com este nome.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Erro ao atualizar empresa.");
+                    }
+                    return View(empresa);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(empresa);
+        }
+
+        // POST: Empresas/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var empresa = await _context.Empresas.FindAsync(id);
+            if (empresa != null)
+            {
+                _context.Empresas.Remove(empresa);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Empresa excluída com sucesso!";
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool EmpresaExists(long id)
+        {
+            return _context.Empresas.Any(e => e.Id == id);
+        }
+    }
+}

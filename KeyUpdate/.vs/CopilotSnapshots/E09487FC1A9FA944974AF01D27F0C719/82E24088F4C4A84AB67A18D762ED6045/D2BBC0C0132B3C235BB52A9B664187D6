@@ -1,0 +1,146 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using KeyUpdate.Data;
+using KeyUpdate.Models;
+using System.Security.Cryptography;
+
+namespace KeyUpdate.Controllers
+{
+    public class ManifestController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ManifestController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Manifest
+        public async Task<IActionResult> Index()
+        {
+            var arquivos = await _context.Manifests.OrderBy(m => m.Arquivo).ToListAsync();
+            return View(arquivos);
+        }
+
+        // POST: Manifest/Upload
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                TempData["ErrorMessage"] = "Nenhum arquivo foi selecionado.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                // Calcular SHA256
+                string sha256Hash;
+                using (var stream = file.OpenReadStream())
+                using (var sha256 = SHA256.Create())
+                {
+                    var hashBytes = await Task.Run(() => sha256.ComputeHash(stream));
+                    sha256Hash = BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+                }
+
+                // Verificar se já existe arquivo com o mesmo SHA256
+                var existente = await _context.Manifests.FirstOrDefaultAsync(m => m.Sha256 == sha256Hash);
+                if (existente != null)
+                {
+                    TempData["ErrorMessage"] = $"Já existe um arquivo com este conteúdo: {existente.Arquivo}";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                // Criar novo registro
+                var manifest = new Manifest
+                {
+                    Arquivo = file.FileName,
+                    Sha256 = sha256Hash,
+                    Regsvr32 = false,
+                    Core = false,
+                    Ativo = true,
+                    CriadoEm = DateTime.Now
+                };
+
+                _context.Add(manifest);
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Arquivo adicionado com sucesso!";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Erro ao adicionar arquivo: {ex.Message}";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: Manifest/UpdateField
+        [HttpPost]
+        public async Task<IActionResult> UpdateField(long id, string field, string value)
+        {
+            try
+            {
+                var manifest = await _context.Manifests.FindAsync(id);
+                if (manifest == null)
+                {
+                    return Json(new { success = false, message = "Arquivo não encontrado." });
+                }
+
+                bool boolValue = value.ToLower() == "true" || value == "1";
+
+                switch (field.ToLower())
+                {
+                    case "regsvr32":
+                        manifest.Regsvr32 = boolValue;
+                        break;
+                    case "core":
+                        manifest.Core = boolValue;
+                        break;
+                    case "ativo":
+                        manifest.Ativo = boolValue;
+                        break;
+                    default:
+                        return Json(new { success = false, message = "Campo inválido." });
+                }
+
+                manifest.AtualizadoEm = DateTime.Now;
+                _context.Update(manifest);
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true, message = "Campo atualizado com sucesso!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"Erro ao atualizar: {ex.Message}" });
+            }
+        }
+
+        // POST: Manifest/Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(long id)
+        {
+            try
+            {
+                var manifest = await _context.Manifests.FindAsync(id);
+                if (manifest != null)
+                {
+                    _context.Manifests.Remove(manifest);
+                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "Arquivo excluído com sucesso!";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Arquivo não encontrado.";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Erro ao excluir arquivo: {ex.Message}";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

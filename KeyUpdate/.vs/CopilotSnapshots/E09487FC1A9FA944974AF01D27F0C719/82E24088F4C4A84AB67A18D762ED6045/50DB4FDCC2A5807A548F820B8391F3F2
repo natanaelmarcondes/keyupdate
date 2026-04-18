@@ -1,0 +1,38 @@
+﻿using Microsoft.EntityFrameworkCore;
+using KeyUpdate.Models;
+
+namespace KeyUpdate.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Empresa> Empresas { get; set; } = null!;
+        public DbSet<Manifest> Manifests { get; set; } = null!;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // Configurações da tabela Empresa
+            modelBuilder.Entity<Empresa>(entity =>
+            {
+                entity.ToTable("empresas");
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.EmpCodigo).IsUnique().HasDatabaseName("uq_emp_codigo");
+                entity.HasIndex(e => e.EmpNome).IsUnique().HasDatabaseName("uq_emp_nome");
+            });
+
+            // Configurações da tabela Manifest
+            modelBuilder.Entity<Manifest>(entity =>
+            {
+                entity.ToTable("manifest");
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Sha256).IsUnique().HasDatabaseName("uq_manifest_sha256");
+            });
+        }
+    }
+}

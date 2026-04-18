@@ -1,0 +1,465 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\models\\viewmodels\\arquivospermitidosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:models\\viewmodels\\arquivospermitidosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\controllers\\arquivospermitidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:controllers\\arquivospermitidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\arquivospermitidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\arquivospermitidos\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\manifest\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\manifest\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\controllers\\manifestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:controllers\\manifestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\models\\manifest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:models\\manifest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\readme_manifest_implementation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:readme_manifest_implementation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\shared\\_layout.example.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\shared\\_layout.example.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\wwwroot\\css\\site.custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:wwwroot\\css\\site.custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\manifest_complete_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:manifest_complete_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\quickstart.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:quickstart.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\checklist.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:checklist.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\code_snippets.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:code_snippets.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\ajustes_tabela_real.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:ajustes_tabela_real.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\resumo_ajustes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:resumo_ajustes.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\database\\create_manifest_table.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:database\\create_manifest_table.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\database\\create_manifest_table.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:database\\create_manifest_table.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\models\\keysiscfg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:models\\keysiscfg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:models\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\clientes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\clientes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\clientes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|d:\\keysystems\\keyupdate\\keyupdate\\views\\clientes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{46F561C0-B183-B2C9-9FDA-3CFA9383057C}|KeyUpdate.csproj|solutionrelative:views\\clientes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Clientes\\Edit.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Clientes\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T12:16:38.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Clientes\\Create.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Create.cshtml",
+              "RelativeToolTip": "Views\\Clientes\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T12:16:38.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Clientes\\Index.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Clientes\\Index.cshtml",
+              "RelativeToolTip": "Views\\Clientes\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T12:16:37.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ClientesController.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ClientesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClientesController.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ClientesController.cs",
+              "RelativeToolTip": "Controllers\\ClientesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T12:16:37.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\Cliente.cs",
+              "RelativeDocumentMoniker": "Models\\Cliente.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\Cliente.cs",
+              "RelativeToolTip": "Models\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T12:16:37.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ArquivosPermitidosViewModel.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\ViewModels\\ArquivosPermitidosViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ViewModels\\ArquivosPermitidosViewModel.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\ViewModels\\ArquivosPermitidosViewModel.cs",
+              "RelativeToolTip": "Models\\ViewModels\\ArquivosPermitidosViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T12:09:45.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\ArquivosPermitidos\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\ArquivosPermitidos\\Index.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\ArquivosPermitidos\\Index.cshtml",
+              "RelativeToolTip": "Views\\ArquivosPermitidos\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T12:09:44.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "KeySisCfg.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\KeySisCfg.cs",
+              "RelativeDocumentMoniker": "Models\\KeySisCfg.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\KeySisCfg.cs",
+              "RelativeToolTip": "Models\\KeySisCfg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T12:09:44.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ArquivosPermitidosController.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ArquivosPermitidosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ArquivosPermitidosController.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ArquivosPermitidosController.cs",
+              "RelativeToolTip": "Controllers\\ArquivosPermitidosController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAWwBgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T12:09:44.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T11:59:20.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T11:35:39.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T11:33:47.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "RESUMO_AJUSTES.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\RESUMO_AJUSTES.md",
+              "RelativeDocumentMoniker": "RESUMO_AJUSTES.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\RESUMO_AJUSTES.md",
+              "RelativeToolTip": "RESUMO_AJUSTES.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:31:06.746Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T11:23:11.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "create_manifest_table.sql ",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Database\\create_manifest_table.sql",
+              "RelativeDocumentMoniker": "Database\\create_manifest_table.sql",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Database\\create_manifest_table.sql",
+              "RelativeToolTip": "Database\\create_manifest_table.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-04-18T11:41:59.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AJUSTES_TABELA_REAL.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\AJUSTES_TABELA_REAL.md",
+              "RelativeDocumentMoniker": "AJUSTES_TABELA_REAL.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\AJUSTES_TABELA_REAL.md",
+              "RelativeToolTip": "AJUSTES_TABELA_REAL.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:30:48.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Manifest.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\Manifest.cs",
+              "RelativeDocumentMoniker": "Models\\Manifest.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Models\\Manifest.cs",
+              "RelativeToolTip": "Models\\Manifest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T11:22:59.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Manifest\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manifest\\Index.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Manifest\\Index.cshtml",
+              "RelativeToolTip": "Views\\Manifest\\Index.cshtml",
+              "ViewState": "AgIAALIAAAAAAAAAAAAAALIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T11:22:59.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ManifestController.cs",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ManifestController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ManifestController.cs",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Controllers\\ManifestController.cs",
+              "RelativeToolTip": "Controllers\\ManifestController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-18T11:22:59.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "README_MANIFEST_IMPLEMENTATION.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\README_MANIFEST_IMPLEMENTATION.md",
+              "RelativeDocumentMoniker": "README_MANIFEST_IMPLEMENTATION.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\README_MANIFEST_IMPLEMENTATION.md",
+              "RelativeToolTip": "README_MANIFEST_IMPLEMENTATION.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:23:33.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_Layout.EXAMPLE.cshtml",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Shared\\_Layout.EXAMPLE.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.EXAMPLE.cshtml",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\Views\\Shared\\_Layout.EXAMPLE.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.EXAMPLE.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-18T11:23:48.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CODE_SNIPPETS.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\CODE_SNIPPETS.md",
+              "RelativeDocumentMoniker": "CODE_SNIPPETS.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\CODE_SNIPPETS.md",
+              "RelativeToolTip": "CODE_SNIPPETS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:26:12.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CHECKLIST.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\CHECKLIST.md",
+              "RelativeDocumentMoniker": "CHECKLIST.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\CHECKLIST.md",
+              "RelativeToolTip": "CHECKLIST.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:25:40.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "QUICKSTART.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\QUICKSTART.md",
+              "RelativeDocumentMoniker": "QUICKSTART.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\QUICKSTART.md",
+              "RelativeToolTip": "QUICKSTART.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:25:16.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MANIFEST_COMPLETE_GUIDE.md",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\MANIFEST_COMPLETE_GUIDE.md",
+              "RelativeDocumentMoniker": "MANIFEST_COMPLETE_GUIDE.md",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\MANIFEST_COMPLETE_GUIDE.md",
+              "RelativeToolTip": "MANIFEST_COMPLETE_GUIDE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-18T11:24:57.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "site.custom.css",
+              "DocumentMoniker": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\wwwroot\\css\\site.custom.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.custom.css",
+              "ToolTip": "D:\\Keysystems\\KeyUpdate\\KeyUpdate\\wwwroot\\css\\site.custom.css",
+              "RelativeToolTip": "wwwroot\\css\\site.custom.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-18T11:24:18.196Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

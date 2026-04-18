@@ -1,0 +1,162 @@
+﻿@model IEnumerable<KeyUpdate.Models.Manifest>
+
+@{
+    ViewData["Title"] = "Arquivos do Manifest";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="page-title">Arquivos do Manifest</h2>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                    Adicionar Arquivo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            @if (Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Manifest ID</th>
+                                <th>Arquivo</th>
+                                <th>SHA256</th>
+                                <th class="text-end">Tamanho</th>
+                                <th class="text-center">Regsvr32</th>
+                                <th class="text-center">Core</th>
+                                <th class="text-center">Ativo</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ManifestId</td>
+                                    <td>@item.NomeArquivo</td>
+                                    <td><code>@item.Sha256</code></td>
+                                    <td class="text-end">@item.TamanhoFormatado</td>
+                                    <td class="text-center">
+                                        <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="regsvr32" checked="@item.Regsvr32" />
+                                    </td>
+                                    <td class="text-center">
+                                        <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="core" checked="@item.Core" />
+                                    </td>
+                                    <td class="text-center">
+                                        <input class="form-check-input toggle-field" type="checkbox" data-id="@item.Id" data-field="ativo" checked="@item.Ativo" />
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="confirmDelete(@item.Id, '@item.NomeArquivo')">Excluir</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5 text-muted">Nenhum arquivo cadastrado.</div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Novo Arquivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="manifestId" class="form-label">Manifest ID</label>
+                        <input type="number" class="form-control" id="manifestId" name="manifestId" min="1" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Arquivo</label>
+                        <input type="file" class="form-control" id="file" name="file" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" method="post" asp-action="Delete" style="display:none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteId" />
+</form>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.toggle-field').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const id = this.dataset.id;
+                const field = this.dataset.field;
+                const value = this.checked;
+                const element = this;
+
+                element.disabled = true;
+
+                fetch('@Url.Action("UpdateField", "Manifest")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+                    body: `id=${encodeURIComponent(id)}&field=${encodeURIComponent(field)}&value=${encodeURIComponent(value)}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success) {
+                        element.checked = !value;
+                        alert(data.message || 'Erro ao atualizar.');
+                    }
+                })
+                .catch(() => {
+                    element.checked = !value;
+                    alert('Erro ao atualizar.');
+                })
+                .finally(() => {
+                    element.disabled = false;
+                });
+            });
+        });
+
+        function confirmDelete(id, nome) {
+            if (confirm(`Deseja excluir o arquivo ${nome}?`)) {
+                document.getElementById('deleteId').value = id;
+                document.getElementById('deleteForm').submit();
+            }
+        }
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace KeyUpdate.Models
+{
+    [Table("empresas")]
+    public class Empresa
+    {
+        [Key]
+        [Column("id")]
+        public long Id { get; set; }
+
+        [Required(ErrorMessage = "O código da empresa é obrigatório.")]
+        [Range(1, 999, ErrorMessage = "O código deve estar entre 1 e 999.")]
+        [Column("emp_codigo")]
+        [Display(Name = "Código")]
+        public int EmpCodigo { get; set; }
+
+        [Required(ErrorMessage = "O nome da empresa é obrigatório.")]
+        [StringLength(100, ErrorMessage = "O nome não pode ter mais de 100 caracteres.")]
+        [Column("emp_nome")]
+        [Display(Name = "Nome da Empresa")]
+        public string EmpNome { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "O modo de execução é obrigatório.")]
+        [Column("exe_mode")]
+        [Display(Name = "Modo de Execução")]
+        public int ExeMode { get; set; }
+
+        [Column("ativo")]
+        [Display(Name = "Ativo")]
+        public bool Ativo { get; set; } = true;
+
+        [Column("criado_em")]
+        [Display(Name = "Criado Em")]
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
+
+        [Column("atualizado_em")]
+        [Display(Name = "Atualizado Em")]
+        public DateTime? AtualizadoEm { get; set; }
+    }
+}

@@ -1,0 +1,184 @@
+using KeyUpdate.Data;
+using KeyUpdate.Models;
+using KeyUpdate.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace KeyUpdate.Controllers
+{
+    public class ArquivosPermitidosController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ArquivosPermitidosController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index(long? empresaId)
+        {
+            var empresas = await _context.Empresas
+                .OrderBy(e => e.EmpNome)
+                .Select(e => new EmpresaItemViewModel
+                {
+                    Id = e.Id,
+                    EmpCodigo = e.EmpCodigo,
+                    EmpNome = e.EmpNome
+                })
+                .ToListAsync();
+
+            var viewModel = new ArquivosPermitidosViewModel
+            {
+                Empresas = empresas,
+                EmpresaSelecionadaId = empresaId
+            };
+
+            if (empresaId.HasValue)
+            {
+                var empresa = await _context.Empresas.FirstOrDefaultAsync(e => e.Id == empresaId.Value);
+                if (empresa != null)
+                {
+                    viewModel.EmpresaSelecionadaNome = empresa.EmpNome;
+
+                    var arquivosPermitidos = await _context.KeySisCfgs
+                        .Where(k => k.EmpCodigo == empresa.EmpCodigo)
+                        .OrderBy(k => k.Arquivo)
+                        .Select(k => new KeySisCfgItemViewModel
+                        {
+                            Id = k.Id,
+                            EmpCodigo = k.EmpCodigo,
+                            EmpNome = k.EmpNome,
+                            Tipo = k.Tipo,
+                            Arquivo = k.Arquivo,
+                            Ativo = k.Ativo
+                        })
+                        .ToListAsync();
+
+                    var arquivosPermitidosNomes = arquivosPermitidos
+                        .Select(k => k.Arquivo)
+                        .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+                    var arquivosDisponiveis = await _context.Manifests
+                        .Where(m => m.Ativo && !m.Core && !arquivosPermitidosNomes.Contains(m.Path))
+                        .OrderBy(m => m.Path)
+                        .Select(m => new ArquivoManifestItemViewModel
+                        {
+                            Id = m.Id,
+                            Arquivo = m.Path,
+                            Tipo = ObterTipoArquivo(m.Path),
+                            ManifestId = m.ManifestId
+                        })
+                        .ToListAsync();
+
+                    viewModel.ArquivosPermitidos = arquivosPermitidos;
+                    viewModel.ArquivosDisponiveis = arquivosDisponiveis;
+                }
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Adicionar(long empresaId, long manifestId)
+        {
+            var empresa = await _context.Empresas.FirstOrDefaultAsync(e => e.Id == empresaId);
+            if (empresa == null)
+            {
+                TempData["ErrorMessage"] = "Empresa não encontrada.";
+                return RedirectToAction(nameof(Index), new { empresaId });
+            }
+
+            var manifest = await _context.Manifests.FirstOrDefaultAsync(m => m.Id == manifestId);
+            if (manifest == null)
+            {
+                TempData["ErrorMessage"] = "Arquivo não encontrado no manifest.";
+                return RedirectToAction(nameof(Index), new { empresaId });
+            }
+
+            var arquivoExistente = await _context.KeySisCfgs
+                .FirstOrDefaultAsync(k => k.EmpCodigo == empresa.EmpCodigo && k.Arquivo == manifest.Path);
+
+            if (arquivoExistente != null)
+            {
+                arquivoExistente.Ativo = true;
+                arquivoExistente.Tipo = ObterTipoArquivo(manifest.Path);
+                arquivoExistente.EmpNome = empresa.EmpNome;
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Arquivo reativado com sucesso.";
+                return RedirectToAction(nameof(Index), new { empresaId });
+            }
+
+            var keySisCfg = new KeySisCfg
+            {
+                EmpCodigo = empresa.EmpCodigo,
+                EmpNome = empresa.EmpNome,
+                Arquivo = manifest.Path,
+                Tipo = ObterTipoArquivo(manifest.Path),
+                Ativo = true
+            };
+
+            _context.KeySisCfgs.Add(keySisCfg);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Arquivo permitido adicionado com sucesso.";
+            return RedirectToAction(nameof(Index), new { empresaId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Remover(long empresaId, long id)
+        {
+            var item = await _context.KeySisCfgs.FirstOrDefaultAsync(k => k.Id == id);
+            if (item == null)
+            {
+                TempData["ErrorMessage"] = "Registro não encontrado.";
+                return RedirectToAction(nameof(Index), new { empresaId });
+            }
+
+            _context.KeySisCfgs.Remove(item);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Arquivo removido com sucesso.";
+            return RedirectToAction(nameof(Index), new { empresaId });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AtualizarAtivo(long id, string value)
+        {
+            try
+            {
+                var item = await _context.KeySisCfgs.FirstOrDefaultAsync(k => k.Id == id);
+                if (item == null)
+                {
+                    return Json(new { success = false, message = "Registro não encontrado." });
+                }
+
+                item.Ativo = value.Equals("true", StringComparison.OrdinalIgnoreCase) || value == "1";
+                await _context.SaveChangesAsync();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
+        private static string ObterTipoArquivo(string arquivo)
+        {
+            var nomeSemExtensao = Path.GetFileNameWithoutExtension(arquivo)?.Trim() ?? string.Empty;
+            if (string.IsNullOrWhiteSpace(nomeSemExtensao))
+            {
+                return string.Empty;
+            }
+
+            if (nomeSemExtensao.Length <= 3)
+            {
+                return nomeSemExtensao.ToUpperInvariant();
+            }
+
+            return nomeSemExtensao.Substring(nomeSemExtensao.Length - 3, 3).ToUpperInvariant();
+        }
+    }
+}

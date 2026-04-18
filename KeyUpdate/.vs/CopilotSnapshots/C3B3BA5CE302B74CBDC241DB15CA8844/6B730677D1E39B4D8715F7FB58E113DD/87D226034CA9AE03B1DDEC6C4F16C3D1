@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace KeyUpdate.Models
+{
+    public class Cliente
+    {
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "O nome do cliente é obrigatório")]
+        [StringLength(200, ErrorMessage = "O nome deve ter no máximo 200 caracteres")]
+        [Display(Name = "Nome do Cliente")]
+        public string Nome { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Selecione o tipo de execução")]
+        [Display(Name = "Rodar em")]
+        public string RodarLocalRede { get; set; } = "Local";
+
+        [Display(Name = "Ativo")]
+        public bool Ativo { get; set; } = true;
+    }
+}
